@@ -30,23 +30,23 @@ public class DummySink {
 		              
         try{
                      //Setting values to HandoffPaymentData to match SQL type so that SqlStructValue class will do the mapping between the bean properties of the HandoffPaymentData class and the attributes of the STRUCT
-                     HandoffPaymentData paymentData = getHandoffPaymentDataValue(transactionDetails);
+        	HandoffPaymentData paymentData = getHandoffPaymentDataValue(transactionDetails);
  
-                     List<Items> itemList = new ArrayList<Items>();
-                     if(transactionDetails.getSubscriberDetails() != null){
+            List<Items> itemList = new ArrayList<Items>();
+                     if(transactionDetails.getSubscriberDetails() !=null){
                            for(SubscriberDetails sd : transactionDetails.getSubscriberDetails()){
-                                  if(sd != null && sd.getItemDetails() !=null && !sd.getItemDetails().isEmpty()){
+                                  if(sd !=null && sd.getItemDetails() != null && !sd.getItemDetails().isEmpty()){
                                          for(ItemDetails itemDetails : sd.getItemDetails()){
                                                 Items it = new Items();
                                                 if(sd.getPhoneNumber() !=null && !sd.getPhoneNumber().isEmpty()){
                                                        it.setMsisdn(Long.valueOf(sd.getPhoneNumber()));
                                                 }
-                                                if(itemDetails.getEquipmentId() != null && !itemDetails.getEquipmentId().isEmpty()){
+                                                if(itemDetails.getEquipmentId() !=null && !itemDetails.getEquipmentId().isEmpty()){
                                                        it.setEquipment_id(Long.valueOf(itemDetails.getEquipmentId()));
                                                 }
                                                 it.setItem_amount(itemDetails.getItemAmount());
                                                 it.setItem_code(itemDetails.getItemCode());
-                                                if(itemDetails.getItemTax() != null && !itemDetails.getItemTax().isEmpty()){
+                                                if(itemDetails.getItemTax() !=null && !itemDetails.getItemTax().isEmpty()){
                                                        it.setItem_tax(Double.parseDouble(itemDetails.getItemTax()));
                                                 }
                                                 it.setItem_type(itemDetails.getItemType());
@@ -58,13 +58,13 @@ public class DummySink {
                                                 /*if(itemDetails.getItemAmountWithTax() != null && !itemDetails.getItemAmountWithTax().isEmpty()){
                                                        it.setItem_amount_with_tax(Double.parseDouble(itemDetails.getItemAmountWithTax()));
                                                 }*/
-                                                if(sd.getTotalItemAmountWithoutTax() != null && !sd.getTotalItemAmountWithoutTax().isEmpty()){
+                                                if(sd.getTotalItemAmountWithoutTax() !=null && !sd.getTotalItemAmountWithoutTax().isEmpty()){
                                                        it.setTotal_item_amount_without_tax(Double.parseDouble(sd.getTotalItemAmountWithoutTax()));
                                                 }
-                                                if(sd.getTotalTax() != null && !sd.getTotalTax().isEmpty()){
+                                                if(sd.getTotalTax() !=null && !sd.getTotalTax().isEmpty()){
                                                        it.setTotal_tax(Double.parseDouble(sd.getTotalTax()));
                                                 }
-                                                if(sd.getTotalItemAmountWithTax() != null && !sd.getTotalItemAmountWithTax().isEmpty()){
+                                                if(sd.getTotalItemAmountWithTax() !=null && !sd.getTotalItemAmountWithTax().isEmpty()){
                                                        it.setTotalitem_amount_with_tax(Double.parseDouble(sd.getTotalItemAmountWithTax()));
                                                 }
                                                
